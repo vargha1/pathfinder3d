@@ -1,0 +1,11 @@
+Model Information:
+* title:	map pin, location pin
+* source:	https://sketchfab.com/3d-models/map-pin-location-pin-ab923ac87fe944e78932e8a1eb66daf6
+* author:	bashgod (https://sketchfab.com/bashgod)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "map pin, location pin" (https://sketchfab.com/3d-models/map-pin-location-pin-ab923ac87fe944e78932e8a1eb66daf6) by bashgod (https://sketchfab.com/bashgod) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
