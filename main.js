@@ -390,7 +390,7 @@ function onMouseDown(event) {
       })
       gsap.to(camera.position, {
         x: 24,
-        y: 10,
+        y: 45,
         z: 125,
         duration: 3,
         ease: "expo.inOut",
@@ -423,7 +423,7 @@ function onMouseDown(event) {
       })
       gsap.to(camera.position, {
         x: 24,
-        y: 10,
+        y: 45,
         z: 45,
         duration: 5,
         delay: 3,
@@ -471,6 +471,116 @@ function onMouseDown(event) {
       let pathGeo = new T.BoxGeometry(1, 1, 40)
       let path = new T.Mesh(pathGeo, pathMat)
       path.position.set(22, 2, 56)
+      path.name = "path"
+      scene.add(path)
+    }
+    if (intersections[0].object.name == "polySurface179PIV") {
+      gsap.to(camera.position, {
+        x: 24,
+        y: 45,
+        z: 125,
+        duration: 3,
+        ease: "expo.inOut",
+        onStart: () => controls.enabled = false,
+        onComplete: () => controls.enabled = true,
+      },)
+      gsap.to(controls.target, {
+        x: 24,
+        y: 5,
+        z: 0,
+        duration: 3,
+        ease: "expo.inOut",
+        onStart: () => controls.enabled = false,
+        onComplete: () => controls.enabled = true,
+        onUpdate: function () {
+          controls.update()
+        }
+      })
+      let sphereMat = new T.MeshStandardMaterial({ color: 0x00ff00 })
+      let sphereGeo = new T.SphereGeometry(1.2)
+      let sphere = new T.Mesh(sphereGeo, sphereMat)
+      sphere.position.set(22, 2, 75)
+      sphere.name = "sphere"
+      scene.add(sphere)
+      gsap.to(camera.position, {
+        x: 24,
+        y: 45,
+        z: -25,
+        duration: 5,
+        delay: 3,
+        ease: "expo.inOut",
+        onStart: () => controls.enabled = false,
+        onComplete: () => controls.enabled = true,
+      },)
+      gsap.to(controls.target, {
+        x: 24,
+        y: 5,
+        z: -100,
+        duration: 5,
+        delay: 3,
+        ease: "expo.inOut",
+        onStart: () => controls.enabled = false,
+        onComplete: () => controls.enabled = true,
+        onUpdate: function () {
+          controls.update()
+        }
+      })
+      gsap.to(sphere.position, {
+        z: -23,
+        duration: 4.4,
+        delay: 3,
+        ease: "expo.inOut"
+      })
+      gsap.to(camera.position, {
+        x: 60,
+        y: 45,
+        z: -25,
+        duration: 5,
+        delay: 6,
+        ease: "expo.inOut",
+        onStart: () => controls.enabled = false,
+        onComplete: () => controls.enabled = true,
+      },)
+      gsap.to(controls.target, {
+        x: -100,
+        y: 5,
+        z: -25,
+        duration: 5,
+        delay: 6,
+        ease: "expo.inOut",
+        onStart: () => controls.enabled = false,
+        onComplete: () => controls.enabled = true,
+        onUpdate: function () {
+          controls.update()
+        }
+      })
+      // gsap.to(camera.position, {
+      //   x: -6,
+      //   y: 24,
+      //   z: 64,
+      //   duration: 3,
+      //   delay: 8,
+      //   ease: "expo.inOut",
+      //   onStart: () => controls.enabled = false,
+      //   onComplete: () => controls.enabled = true,
+      // },)
+      // gsap.to(controls.target, {
+      //   x: -6,
+      //   y: 5,
+      //   z: 0,
+      //   duration: 3,
+      //   delay: 8,
+      //   ease: "expo.inOut",
+      //   onStart: () => controls.enabled = false,
+      //   onComplete: () => controls.enabled = true,
+      //   onUpdate: function () {
+      //     controls.update()
+      //   }
+      // })
+      let pathMat = new T.MeshStandardMaterial({ color: 0xff0000 })
+      let pathGeo = new T.BoxGeometry(1, 1, 95)
+      let path = new T.Mesh(pathGeo, pathMat)
+      path.position.set(22, 2, 25)
       path.name = "path"
       scene.add(path)
     }
@@ -754,7 +864,7 @@ window.backBtn = () => {
   gsap.globalTimeline.clear()
   gsap.to(camera.position, {
     x: 24,
-    y: 24,
+    y: 45,
     z: 125,
     duration: 3,
     ease: "expo.inOut",
