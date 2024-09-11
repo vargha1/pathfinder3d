@@ -247,7 +247,6 @@ loader.load("scene.gltf", function (gltf) {
   clock = new T.Clock()
   animate()
   scene.add(mesh)
-  loading()
 })
 
 // let points2
