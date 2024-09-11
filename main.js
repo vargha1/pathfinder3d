@@ -1,4 +1,3 @@
-import './style.css'
 import * as T from "three"
 import gsap from "gsap";
 import { OrbitControls, TextGeometry, FontLoader } from "three/examples/jsm/Addons.js";
@@ -10,18 +9,12 @@ import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
 import { TextureLoader } from "three";
 import RajdHani from "./RajdHani.json"
-import { color } from 'three/webgpu';
 
 const font2 = new FontLoader().parse(RajdHani)
 const scene = new T.Scene();
 const camera = new T.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-const loader = new GLTFLoader().setPath("./model/");
+const loader = new GLTFLoader().setPath("/model/");
 const renderer = new T.WebGLRenderer({ antialias: true, alpha: true });
-if (localStorage.getItem("clickCount") == null) {
-  let clickCount = 5
-  localStorage.setItem("clickCount", clickCount)
-}
-
 const controls = new OrbitControls(camera, renderer.domElement)
 // controls.enablePan = false
 // controls.minPolarAngle = 1;
@@ -417,11 +410,23 @@ function onMouseDown(event) {
           controls.update()
         }
       })
+      let sphereMat = new T.MeshStandardMaterial({ color: 0x00ff00 })
+      let sphereGeo = new T.SphereGeometry(1.2)
+      let sphere = new T.Mesh(sphereGeo, sphereMat)
+      sphere.position.set(22, 2, 75)
+      sphere.name = "sphere"
+      scene.add(sphere)
+      gsap.to(sphere.position, {
+        z: 36,
+        duration: 5,
+        delay: 3,
+        ease: "expo.inOut"
+      })
       gsap.to(camera.position, {
         x: 24,
         y: 10,
         z: 45,
-        duration: 3,
+        duration: 5,
         delay: 3,
         ease: "expo.inOut",
         onStart: () => controls.enabled = false,
@@ -431,7 +436,7 @@ function onMouseDown(event) {
         x: 24,
         y: 5,
         z: 0,
-        duration: 3,
+        duration: 5,
         delay: 3,
         ease: "expo.inOut",
         onStart: () => controls.enabled = false,
@@ -445,7 +450,7 @@ function onMouseDown(event) {
         y: 24,
         z: 64,
         duration: 3,
-        delay: 6,
+        delay: 8,
         ease: "expo.inOut",
         onStart: () => controls.enabled = false,
         onComplete: () => controls.enabled = true,
@@ -455,7 +460,7 @@ function onMouseDown(event) {
         y: 5,
         z: 0,
         duration: 3,
-        delay: 6,
+        delay: 8,
         ease: "expo.inOut",
         onStart: () => controls.enabled = false,
         onComplete: () => controls.enabled = true,
@@ -467,6 +472,7 @@ function onMouseDown(event) {
       let pathGeo = new T.BoxGeometry(1, 1, 40)
       let path = new T.Mesh(pathGeo, pathMat)
       path.position.set(22, 2, 56)
+      path.name = "path"
       scene.add(path)
     }
     if (intersections[0].object.name == "polySurface63PIV") {
@@ -742,6 +748,32 @@ window.addFlowers = () => {
     isSnowing = false;
     hasFlowers = false;
   }
+}
+window.backBtn = () => {
+  scene.remove(scene.getObjectByName("path"))
+  scene.remove(scene.getObjectByName("sphere"))
+  gsap.globalTimeline.clear()
+  gsap.to(camera.position, {
+    x: 24,
+    y: 24,
+    z: 125,
+    duration: 3,
+    ease: "expo.inOut",
+    onStart: () => controls.enabled = false,
+    onComplete: () => controls.enabled = true,
+  },)
+  gsap.to(controls.target, {
+    x: 24,
+    y: 5,
+    z: 0,
+    duration: 3,
+    ease: "expo.inOut",
+    onStart: () => controls.enabled = false,
+    onComplete: () => controls.enabled = true,
+    onUpdate: function () {
+      controls.update()
+    }
+  })
 }
 function animate() {
   requestAnimationFrame(animate);
