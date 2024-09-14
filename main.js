@@ -43,6 +43,49 @@ const materials = {};
 
 camera.position.set(230, 230, 500)
 
+let selectedCont = document.querySelector("#selected")
+selectedCont.addEventListener("click", () => {
+  if (document.getElementById("optcont").classList.contains("opacity-0")) {
+    document.getElementById("optcont").classList.remove("opacity-0")
+    document.getElementById("optcont").classList.remove("max-h-0")
+    document.getElementById("optcont").classList.remove("overflow-hidden")
+    document.getElementById("optcont").classList.add("max-h-[150px]")
+    document.getElementById("optcont").classList.add("overflow-y-scroll")
+    document.getElementById("optcont").classList.add("pt-10")
+  } else {
+    document.getElementById("optcont").classList.add("opacity-0")
+    document.getElementById("optcont").classList.add("max-h-0")
+    document.getElementById("optcont").classList.add("overflow-hidden")
+    document.getElementById("optcont").classList.remove("max-h-[150px]")
+    document.getElementById("optcont").classList.remove("overflow-y-scroll")
+    document.getElementById("optcont").classList.remove("pt-10")
+  }
+})
+
+let optList = document.querySelectorAll(".a")
+optList.forEach(opt => {
+  opt.addEventListener("click", () => {
+    selectedCont.innerHTML = opt.querySelector("label").innerHTML
+  })
+})
+let srchInput = document.querySelector("#srch")
+
+srchInput.addEventListener("keyup", e => {
+  filterList(e.target.value.toLowerCase())
+})
+
+const filterList = term => {
+  optList.forEach(opt => {
+    if (opt.children.item(1).innerHTML.toLowerCase().indexOf(term) != -1) {
+      opt.classList.add("block")
+      opt.classList.remove("hidden")
+    } else {
+      opt.classList.add("hidden")
+      opt.classList.remove("blockA")
+    }
+  })
+}
+
 // let elem = document.createElement('div');
 // elem.className = "flex absolute h-[100dvh] items-center justify-center md:left-[20%] md:right-[20%] left-0 right-0"
 // elem.id = "wrapper"
