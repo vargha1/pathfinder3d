@@ -52,6 +52,8 @@ selectedCont.addEventListener("click", () => {
     document.getElementById("optcont").classList.add("max-h-[150px]")
     document.getElementById("optcont").classList.add("overflow-y-scroll")
     document.getElementById("optcont").classList.add("pt-10")
+    filterList("")
+    document.getElementById("srch").value = ""
   } else {
     document.getElementById("optcont").classList.add("opacity-0")
     document.getElementById("optcont").classList.add("max-h-0")
@@ -375,6 +377,7 @@ pl.position.set(0, 2000, 0)
 
 
 const raycaster = new T.Raycaster()
+let clicked = false
 
 window.addEventListener('pointerdown', onMouseDown)
 function onMouseDown(event) {
@@ -385,7 +388,6 @@ function onMouseDown(event) {
     -((event.clientY / renderer.domElement.clientHeight) * 2 - 1),
   )
   raycaster.setFromCamera(coords, camera)
-
   let intersections = raycaster.intersectObjects(scene.children, true);
   if (intersections.length > 0) {
     console.log(intersections[0].object);
@@ -414,7 +416,7 @@ function onMouseDown(event) {
     //     })
     // }
     if (intersections[0].object.name != "polySurface188PIV" && intersections[0].object.name != "CP8PIV" && intersections[0].object.name != "polySurface15PIV" && intersections[0].object.name != "polySurface12PIV" && intersections[0].object.name != "polySurface60PIV" && intersections[0].object.name != "polySurface98PIV" && intersections[0].object.name != "polySurface54PIV" && intersections[0].object.name != "polySurface158PIV" && intersections[0].object.name != "polySurface1PIV" && intersections[0].object.name != "polySurface3PIV" && intersections[0].object.name != "polySurface7PIV" && intersections[0].object.name != "polySurface200PIV" && intersections[0].object.name != "polySurface201PIV" && intersections[0].object.name != "polySurface187PIV" && intersections[0].object.name != "polySurface20PIV" && intersections[0].object.name != "polySurface23PIV" && intersections[0].object.name != "polySurface59PIV" && intersections[0].object.name != "polySurface181PIV" && intersections[0].object.name != "polySurface61PIV" && intersections[0].object.name != "polySurface194PIV" && intersections[0].object.name != "polySurface198PIV" && intersections[0].object.name != "polySurface48PIV" && intersections[0].object.name != "polySurface174PIV" && intersections[0].object.name != "polySurface91PIV" && intersections[0].object.name != "polySurface126PIV" && intersections[0].object.name != "polySurface120PIV" && intersections[0].object.name != "polySurface95PIV" && intersections[0].object.name != "polySurface148PIV" && intersections[0].object.name != "polySurface82PIV" && intersections[0].object.name != "polySurface38PIV" && intersections[0].object.name != "polySurface88PIV" && intersections[0].object.name != "polySurface89PIV" && intersections[0].object.name != "polySurface145PIV" && intersections[0].object.name != "polySurface184PIV" && intersections[0].object.name != "polySurface197PIV" && intersections[0].object.name != "polySurface128PIV" && intersections[0].object.name != "polySurface96PIV" && intersections[0].object.name != "polySurface201PIV" && intersections[0].object.name != "polySurface133PIV" && intersections[0].object.name != "polySurface51PIV" && intersections[0].object.name != "polySurface123PIV" && intersections[0].object.name != "polySurface42PIV" && intersections[0].object.name != "polySurface76PIV" && intersections[0].object.name != "polySurface94PIV" && intersections[0].object.name != "polySurface24PIV" && intersections[0].object.name != "polySurface35PIV" && intersections[0].object.name != "polySurface193PIV" && intersections[0].object.name != "polySurface169PIV" && intersections[0].object.name != "polySurface68PIV" && intersections[0].object.name != "polySurface131PIV" && intersections[0].object.name != "polySurface153PIV" && intersections[0].object.name != "polySurface78PIV" && intersections[0].object.name != "polySurface97PIV" && intersections[0].object.name != "polySurface130PIV" && intersections[0].object.name != "polySurface152PIV" && intersections[0].object.name != "polySurface109PIV" && intersections[0].object.name != "polySurface47PIV" && intersections[0].object.name != "polySurface154PIV" && intersections[0].object.name != "polySurface119PIV" && intersections[0].object.name != "polySurface106PIV" && intersections[0].object.name != "polySurface137PIV" && intersections[0].object.name != "polySurface65PIV" && intersections[0].object.name != "polySurface155PIV" && intersections[0].object.name != "polySurface40PIV" && intersections[0].object.name != "polySurface57PIV" && intersections[0].object.name != "polySurface2PIV" && intersections[0].object.name != "polySurface13PIV" && intersections[0].object.name != "polySurface17PIV" && intersections[0].object.name != "polySurface178PIV" && intersections[0].object.name != "polySurface16PIV" && intersections[0].object.name != "polySurface21PIV" && intersections[0].object.name != "polySurface111PIV" && intersections[0].object.name != "polySurface41PIV" && intersections[0].object.name != "polySurface116PIV" && intersections[0].object.name != "polySurface39PIV" && intersections[0].object.name != "polySurface134PIV" && intersections[0].object.name != "polySurface199PIV" && intersections[0].object.name != "polySurface164PIV" && intersections[0].object.name != "polySurface70PIV" && intersections[0].object.name != "polySurface31PIV" && intersections[0].object.name != "polySurface6PIV" && intersections[0].object.name != "polySurface11PIV" && intersections[0].object.name != "polySurface196PIV" && intersections[0].object.name != "polySurface36PIV" && intersections[0].object.name != "polySurface58PIV" && intersections[0].object.name != "polySurface93PIV" && intersections[0].object.name != "polySurface27PIV" && intersections[0].object.name != "polySurface53PIV" && intersections[0].object.name != "polySurface81PIV" && intersections[0].object.name != "polySurface165PIV" && intersections[0].object.name != "polySurface101PIV" && intersections[0].object.name != "polySurface105PIV" && intersections[0].object.name != "polySurface171PIV" && intersections[0].object.name != "polySurface99PIV" && intersections[0].object.name != "polySurface62PIV" && intersections[0].object.name != "polySurface118PIV" && intersections[0].object.name != "polySurface170PIV" && intersections[0].object.name != "polySurface125PIV" && intersections[0].object.name != "polySurface151PIV" && intersections[0].object.name != "polySurface52PIV" && intersections[0].object.name != "polySurface71PIV" && intersections[0].object.name != "polySurface156PIV" && intersections[0].object.name != "polySurface55PIV" && intersections[0].object.name != "polySurface67PIV" && intersections[0].object.name != "polySurface26PIV" && intersections[0].object.name != "polySurface147PIV" && intersections[0].object.name != "polySurface168PIV" && intersections[0].object.name != "polySurface44PIV" && intersections[0].object.name != "polySurface112PIV" && intersections[0].object.name != "polySurface142PIV" && intersections[0].object.name != "polySurface64PIV" && intersections[0].object.name != "polySurface90PIV" && intersections[0].object.name != "polySurface150PIV" && intersections[0].object.name != "polySurface32PIV" && intersections[0].object.name != "polySurface138PIV" && intersections[0].object.name != "polySurface80PIV" && intersections[0].object.name != "polySurface129PIV" && intersections[0].object.name != "polySurface177PIV" && intersections[0].object.name != "polySurface135PIV" && intersections[0].object.name != "polySurface140PIV" && intersections[0].object.name != "polySurface103PIV" && intersections[0].object.name != "polySurface113PIV" && intersections[0].object.name != "polySurface160PIV" && intersections[0].object.name != "polySurface43PIV" && intersections[0].object.name != "polySurface69PIV" && intersections[0].object.name != "polySurface110PIV" && intersections[0].object.name != "polySurface189PIV" && intersections[0].object.name != "polySurface33PIV" && intersections[0].object.name != "polySurface124PIV" && intersections[0].object.name != "polySurface166PIV" && intersections[0].object.name != "polySurface34PIV" && intersections[0].object.name != "polySurface127PIV" && intersections[0].object.name != "polySurface176PIV" && intersections[0].object.name != "polySurface4PIV" && intersections[0].object.name != "polySurface56PIV" && intersections[0].object.name != "polySurface183PIV" && intersections[0].object.name != "polySurface28PIV" && intersections[0].object.name != "polySurface18PIV" && intersections[0].object.name != "polySurface185PIV" && intersections[0].object.name != "polySurface8PIV" && intersections[0].object.name != "polySurface14PIV" && intersections[0].object.name != "polySurface19PIV" && intersections[0].object.name != "polySurface136PIV" && intersections[0].object.name != "polySurface108PIV" && intersections[0].object.name != "polySurface173PIV" && intersections[0].object.name != "polySurface37PIV" && intersections[0].object.name != "polySurface144PIV" && intersections[0].object.name != "CP4Shape" && intersections[0].object.name != "CP5PIV" && intersections[0].object.name != "CP4Shape_1" && intersections[0].object.name != "CP1PIV") {
-      if (intersections[0].object.material.color.getHexString() != "ff0000") {
+      if (intersections[0].object.material.color.getHexString() != "ff0000" && !clicked) {
         prevColor = intersections[0].object.material.color.getHexString();
         intersections[0].object.material.color.setHex("0xff0000")
         // scene.traverse(obj => {
@@ -422,10 +424,12 @@ function onMouseDown(event) {
         //     obj.position.set(intersections[0].object.position.x, intersections[0].object.position.y, intersections[0].object.position.z)
         //   }
         // })
+        lastClickedObject = intersections[0].object
+        clicked = true
       }
-      lastClickedObject = intersections[0].object
     }
-    if (intersections[0].object.name == "polySurface182PIV") {
+    if (intersections[0].object.name == "polySurface182PIV" && !clicked) {
+      clicked = true
       gsap.globalTimeline.clear()
       gsap.to(camera.position, {
         x: 24,
@@ -512,7 +516,8 @@ function onMouseDown(event) {
         scene.add(path)
       }
     }
-    if (intersections[0].object.name == "polySurface179PIV") {
+    if (intersections[0].object.name == "polySurface179PIV" && !clicked) {
+      clicked = true
       gsap.globalTimeline.clear()
       gsap.to(camera.position, {
         x: 24,
@@ -631,7 +636,8 @@ function onMouseDown(event) {
         scene.add(path2)
       }
     }
-    if (intersections[0].object.name == "polySurface85PIV") {
+    if (intersections[0].object.name == "polySurface85PIV" && !clicked) {
+      clicked = true
       gsap.globalTimeline.clear()
       gsap.to(camera.position, {
         x: 24,
@@ -752,7 +758,8 @@ function onMouseDown(event) {
         scene.add(path2)
       }
     }
-    if (intersections[0].object.name == "polySurface87PIV") {
+    if (intersections[0].object.name == "polySurface87PIV" && !clicked) {
+      clicked = true
       gsap.globalTimeline.clear()
       gsap.to(camera.position, {
         x: 24,
@@ -871,7 +878,8 @@ function onMouseDown(event) {
         scene.add(path2)
       }
     }
-    if (intersections[0].object.name == "polySurface66PIV") {
+    if (intersections[0].object.name == "polySurface66PIV" && !clicked) {
+      clicked = true;
       gsap.globalTimeline.clear()
       gsap.to(camera.position, {
         x: 24,
@@ -990,7 +998,8 @@ function onMouseDown(event) {
         scene.add(path2)
       }
     }
-    if (intersections[0].object.name == "polySurface63PIV") {
+    if (intersections[0].object.name == "polySurface63PIV" && !clicked) {
+      clicked = true
       scene.traverse(obj => {
         if (obj.name == "Object_4") {
           obj.position.set(-4, 975, 53)
@@ -1016,7 +1025,8 @@ function onMouseDown(event) {
         }
       })
     }
-    if (intersections[0].object.name == "polySurface72PIV") {
+    if (intersections[0].object.name == "polySurface72PIV" && !clicked) {
+      clicked = true
       gsap.globalTimeline.clear()
       gsap.to(camera.position, {
         x: 24,
@@ -1376,6 +1386,7 @@ window.addFlowers = () => {
   }
 }
 window.backBtn = () => {
+  clicked = false
   scene.remove(scene.getObjectByName("path"))
   scene.remove(scene.getObjectByName("path2"))
   scene.remove(scene.getObjectByName("sphere"))
